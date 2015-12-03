@@ -13,7 +13,7 @@ Final group project for INFO 343 Fall Quarter
 
 ----
 
-## What is [steganography)](https://en.wikipedia.org/wiki/Steganography)?
+## What is [steganography](https://en.wikipedia.org/wiki/Steganography)?
 Steganography is the act of concealing data inside of images, using various techniques such as looking only at the [LSB](https://en.wikipedia.org/wiki/Least_significant_bit) or using the [alpha channel](https://en.wikipedia.org/wiki/Transparency_(graphic)) of an image. This is a short list of all the possible options that steganography offers.
 
 ## What does this site do?
