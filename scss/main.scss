@@ -1,0 +1,39 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,300);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+$background-main: #E9EAEE;
+
+body
+{
+	font-family: "Lato", "Helvetica Neue", Helvetica, Sans-Serif;
+	font-size: 16px;
+	font-weight: 300;
+}
+
+header {
+    background-color: $background-main;
+    min-height: 150px;
+
+    h1, h2, h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+.content {
+    background-color: #1D1;
+    min-height: 100px;
+}
+
+.about {
+    background-color: #0AA;
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 200px;
+}
+
+footer {
+    background-color: #A0A;
+    height: 3em;
+}

@@ -5,10 +5,7 @@ Final group project for INFO 343 Fall Quarter
 
 
 ### Team Members
-[Anya Hsu](https://github.com/anyahsu280)
-[Cameron Doane](https://github.com/CamD67)
-[Justin McKissick](https://github.com/justmckissick)
-[Vishesh Sood](https://github.com/VisheshSood)
+[Anya Hsu](https://github.com/anyahsu280), [Cameron Doane](https://github.com/CamD67), [Justin McKissick](https://github.com/justmckissick), [Vishesh Sood](https://github.com/VisheshSood)
 
 
 ## What is [steganography](https://en.wikipedia.org/wiki/Steganography)?
@@ -16,3 +13,9 @@ Steganography is the act of concealing data inside of images, using various tech
 
 ## What does this site do?
 This site offers users the chance to encode text into any image, as well as the ability to analyze a given image for previously hidden text.
+
+### To do:
+1. Finish basic page layout
+2. Landing page with has options for encoding or decoding
+3. JS for encoding and decoding stego text (basic RBG and/or alpha)
+4. Extra encoding and decoding options

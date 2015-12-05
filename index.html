@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="img/page-icon.png"/>	
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<title>Stego</title>
-</head>
-<body>
-	
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--
+        Removed until we get an icon, so page has 0 errors
+        <link rel="icon" href="img/page-icon.png"/>
+        -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <!-- Don't convert these to min until AFTER the project is done. Minified js gives unhelpful errors -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+        <script src="js/app.js"></script>
+
+        <title>Stego</title>
+    </head>
+    <body>
+        <header>
+            <h1>Stego</h1>
+            <h3>The Steganography Tool</h3>
+        </header>
+
+        <div ui-view ng-app="Stego" class="container content"></div>
+
+        <div class="about">
+            <!--
+            About section, that will appear on all pages. These are all the longer sections at the bottom of the page.
+            The smaller "what is going on now" sections go into the view pages
+            -->
+        </div>
+
+        <footer>
+            <!-- General about us, link to github, sources for images, etc. Contstant across all pages -->
+        </footer>
+
+    </body>
 </html>
