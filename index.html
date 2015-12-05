@@ -26,7 +26,15 @@
             <h3>The Steganography Tool</h3>
         </header>
 
-        <div ui-view ng-app="Stego" class="container content"></div>
+        <!--<div ui-view ng-app="Stego" class="container content"></div>-->
+
+        <div ng-app="Stego" ng-controller="StegoController">
+            <form name="test" ng-submit="submitForm()">
+                <label for="imageInput">Test Upload:</label>
+                <input type="file" name="imageInput" id="imageInput" accept="image/*" ng-model="uploadedImage">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
 
         <div class="about">
             <!--
