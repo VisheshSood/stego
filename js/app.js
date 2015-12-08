@@ -41,33 +41,18 @@ angular.module("Stego", ["ui.router"])
                     var context = canvas.getContext('2d');
                     context.drawImage(imageElement, 0, 0);
                     var rawData = context.getImageData(0, 0, canvas.width, canvas.height);
-                    // for some reason this is faster?
+                    // getting a reference to the data to speed up references
                     var data = rawData.data;
                     console.log(data);
-                    // read in the data as arrays.
-                    var buf8 = new Uint8ClampedArray(data.buffer);
-                    var buf32 = new Uint32Array(data.buffer);
-                    // Determine whether Uint32 is little- or big-endian
-                    // https://en.wikipedia.org/wiki/Endianness
-                    var temp = buf32[1];
-                    buf32[1] = 0x0a0b0c0d;
-                    var isLittleEndian = true;
-                    if (buf8[4] === 0x0a && buf8[5] === 0x0b && buf8[6] === 0x0c &&
-                        buf8[7] === 0x0d) {
-                        isLittleEndian = false;
-                    }
-                    // reset the change
-                    buf32[1] = temp;
 
-                    var manipulator = new Manipulator(buf32, canvas.width, canvas.height, isLittleEndian);
+                    var manipulator = new Manipulator(data, canvas.width, canvas.height);
                     manipulator.encode("test");
-                    console.log(buf32);
-                    rawData.data.set(buf8);
+                    rawData.data.set(manipulator.buf8);
                     context.putImageData(rawData, 0, 0);
                     console.log("Output: (RGBA format)");
                     console.log(data);
                     $scope.loading = false;
-                }
+                };
                 $scope.loading = true;
                 read.readAsDataURL(file);
             }

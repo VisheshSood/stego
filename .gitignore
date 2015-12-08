@@ -151,6 +151,7 @@ node_modules
 
 # Optional npm cache directory
 .npm
+.npm-cache
 
 # Optional REPL history
 .node_repl_history
