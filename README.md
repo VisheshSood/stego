@@ -1,5 +1,5 @@
 # Stego
-A web-app that encodes an decodes data stored in images using [steganography](https://en.wikipedia.org/wiki/Steganography)
+A web-app that encodes and decodes data stored in images using [steganography](https://en.wikipedia.org/wiki/Steganography)
 
 Final group project for INFO 343 Fall Quarter
 
