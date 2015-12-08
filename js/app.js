@@ -21,3 +21,4 @@ angular.module("Stego", ["ui.router"])
     .controller("StegoController", function($scope){
         console.log("Stego is up and running!");
     });
+
