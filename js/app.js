@@ -43,7 +43,7 @@ angular.module("Stego", ["ui.router"])
                     var rawData = context.getImageData(0, 0, canvas.width, canvas.height);
                     // for some reason this is faster?
                     var data = rawData.data;
-
+                    console.log(data);
                     // read in the data as arrays.
                     var buf8 = new Uint8ClampedArray(data.buffer);
                     var buf32 = new Uint32Array(data.buffer);
@@ -59,7 +59,9 @@ angular.module("Stego", ["ui.router"])
                     // reset the change
                     buf32[1] = temp;
 
-                    encode(buf32, isLittleEndian, canvas.width, canvas.height);
+                    var manipulator = new Manipulator(buf32, canvas.width, canvas.height, isLittleEndian);
+                    manipulator.encode("test");
+                    console.log(buf32);
                     rawData.data.set(buf8);
                     context.putImageData(rawData, 0, 0);
                     console.log("Output: (RGBA format)");
@@ -69,30 +71,5 @@ angular.module("Stego", ["ui.router"])
                 $scope.loading = true;
                 read.readAsDataURL(file);
             }
-        }
-
-        // All encoding of the image goes in here
-        // see http://jsperf.com/canvas-pixel-manipulation for speed test
-        function encode(data, isLittleEndian, height, width){
-            // gets the pixel at the given (x,y) coordinate
-            // assumes that the given (x,y) coordinate is within the image
-            function getPixel(x, y){
-                return data[y * width + x];
-            }
-            function getRedLsb(x,y){
-                // 125      | dec
-                // 01111101 | bin
-                return getPixel(x,y) & 1;
-            }
-            // Sets the pixel at location (x,y) to the given RGBA value
-            // assumes that the given (x,y) coordinate is within the image
-            function setPixel(x, y, r, g, b, a){
-                if(isLittleEndian){
-                    data[y * width + x] = (a << 24) | (b << 16) | (g << 8) | r;
-                 } else {
-                    data[y * width + x] = (r << 24) | (g << 16) | (b << 8) | a;
-                 }
-            }
-            // PLACE ENCODING CODE BELOW HERE
         }
     });
