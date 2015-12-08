@@ -41,7 +41,9 @@ angular.module("Stego", ["ui.router"])
                     var context = canvas.getContext('2d');
                     context.drawImage(imageElement, 0, 0);
                     var rawData = context.getImageData(0, 0, canvas.width, canvas.height);
-                    var buffer = new ArrayBuffer(rawData.data.length);
+                    // for some reason this is faster?
+                    var data = rawData.data;
+                    var buffer = data.buffer;
 
                     // read in the data as arrays.
                     var buf8 = new Uint8ClampedArray(buffer);
@@ -60,7 +62,7 @@ angular.module("Stego", ["ui.router"])
                     rawData.data.set(buf8);
                     context.putImageData(rawData, 0, 0);
                     console.log("Output: (RGBA format)");
-                    console.log(rawData.data);
+                    console.log(data);
                     $scope.loading = false;
                 }
                 $scope.loading = true;
@@ -70,20 +72,31 @@ angular.module("Stego", ["ui.router"])
 
         // All encoding of the image goes in here. ONLY use bitshift operators
         // see http://jsperf.com/canvas-pixel-manipulation for speed test
-        function encode(array32, isLittleEndian){
-            // example manipulation
-            if(isLittleEndian){
-                array32[0] =
-                (255   << 24) |    // alpha
-                (113 << 16) |    // blue
-                (112 <<  8) |    // green
-                111;            //red
-             } else {
-                array32[0] =
-                (111   << 24) |  // red
-                (112 << 16) |    // green
-                (113 <<  8) |    // blue
-                255;             //alpha
-             }
+        function encode(array32, isLittleEndian, height, width){
+            // gets the pixel at the given (x,y) coordinate
+            // assumes that the given (x,y) coordinate is within the image
+            function getPixel(x, y){
+                return array32[y * width + x];
+            }
+            // Sets the pixel at location (x,y) to the given RGBA value
+            // assumes that the given (x,y) coordinate is within the image
+            function setPixel(x, y, r, g, b, a){
+                if(isLittleEndian){
+                    getPixel(x,y) =
+                    (a   << 24) |
+                    (b << 16) |
+                    (g <<  8) |
+                    r;
+                 } else {
+                    getPixel(x,y) =
+                    (r   << 24) |
+                    (g << 16) |
+                    (b <<  8) |
+                    a;
+                 }
+            }
+
+            // PLACE ENCODING CODE BELOW HERE
+
         }
     });
