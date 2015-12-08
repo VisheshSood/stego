@@ -3,6 +3,7 @@ exclude/
 # You should not be committing CSS files, commit SCSS instead!
 css/
 *.css
+test/lib
 
 # Created by https://www.gitignore.io/api/webstorm,windows,osx,sass,grunt
 
