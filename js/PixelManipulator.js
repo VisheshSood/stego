@@ -25,28 +25,37 @@ function Manipulator(buffer, width, height){
         // https://en.wikipedia.org/wiki/Endianness
         var temp = this.buf32[1];
         this.buf32[0] = 0x0a0b0c0d;
-        this.isLittleEndian = true;
-        if (this.buf8[0] === 0x0a && this.buf8[1] === 0x0b && this.buf8[2] === 0x0c &&
-            this.buf8[3] === 0x0d) {
-            this.isLittleEndian = false;
-        }
+
+        this.isLittleEndian = !(this.buf8[0] === 0x0a && this.buf8[1] === 0x0b && this.buf8[2] === 0x0c &&
+                                this.buf8[3] === 0x0d);
         // reset the change
         this.buf32[0] = temp;
     };
 
     // Sets the pixel at location (x,y) to the given RGBA value
     // assumes that the given (x,y) coordinate is within the image
-    this.setPixel = function(x, y, r, g, b, a){
+    this.setPixel = function(index, r, g, b, a){
         if(this.isLittleEndian){
-            this.buf32[y * width + x] = (a << 24) | (b << 16) | (g << 8) | r;
+            this.buf32[index] = (a << 24) | (b << 16) | (g << 8) | r;
          } else {
-            this.buf32[y * width + x] = (r << 24) | (g << 16) | (b << 8) | a;
+            this.buf32[index] = (r << 24) | (g << 16) | (b << 8) | a;
          }
     };
 
-    this.getLsb = function(x, y, colorIndex){
-        /* add 0-2 for RGB respectively */
-        if(colorIndex < 0 || colorIndex >= 3){ throw "Color index must be between 0 and 3 (R, G, or B respectively)";}
+    /* Sets the lsb of the pixel at the given index with the given array of 3 bits */
+    this.setLsb = function(index, bits){
+        /* ------- Error checking omitted for speed reasons
+        if(bits.length > 3){ throw "Can only insert 3 bits at a time."; }
+        */
+        this.buf8
+    };
 
-    }
+    this.getLsb = function(index, colorIndex){
+        /*  ------ Error checking omitted for speed reasons
+        // add 0-2 for RGB respectively
+        if(colorIndex < 0 || colorIndex >= 3){ throw "Color index must be between 0 and 3 (R, G, or B respectively)";}
+        */
+        console.log("got lsb of: "+this.buf8[index * 4 + colorIndex] + " as: "+this.buf8[index * 4 + colorIndex] & 1);
+        return this.buf8[index * 4 + colorIndex] & 1;
+    };
 }
