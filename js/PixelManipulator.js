@@ -20,10 +20,13 @@ function Manipulator(buffer, width, height){
 
         console.log("decoded! (not really yet...)");
         var finalBinary;
+        finalBinary = 101010101110;
         var finalString = '';
-        
-        var numberofPixels = buf32.length;
-        for (int )
+
+
+        console.log(parseInt(finalBinary,2).toString(10))
+
+        //Need code to convert final binary into string. 
         var dv = [1,3,4];
         console.log(dv.toString());
 
