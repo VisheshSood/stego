@@ -19,12 +19,12 @@ function Manipulator(buffer, width, height){
     this.decode = function(){
 
         console.log("decoded! (not really yet...)");
+        var finalBinary;
         var finalString = '';
-        var dv = [1, 2, 3];
-
-        for (int i = 0; i < dv.length; i++) {
-
-        }
+        
+        var numberofPixels = buf32.length;
+        for (int )
+        var dv = [1,3,4];
         console.log(dv.toString());
 
     };
@@ -51,7 +51,6 @@ function Manipulator(buffer, width, height){
         this.buf32[0] = temp;
     };
     this.getEndianness();
-
 
     // Sets the pixel at location (x,y) to the given RGBA value
     // assumes that the given (x,y) coordinate is within the image
