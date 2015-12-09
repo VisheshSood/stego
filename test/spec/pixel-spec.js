@@ -31,4 +31,12 @@ describe("raw pixel manipulation functions", function(){
     it("should set the right pixel value", function(){
 
     });
+
+    it("decodes an image", function() {
+
+    })
+
+    it("decodes the bits into string", function() {
+        
+    })
 });

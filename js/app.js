@@ -22,7 +22,7 @@ angular.module("Stego", ["ui.router"])
         "use strict";
 
         $scope.loading = false;
-
+        //DO NOT TOUCH THIS!
         $scope.submitForm = function(){
             var file = document.getElementById("imageInput").files[0];
             if(file){
@@ -56,5 +56,10 @@ angular.module("Stego", ["ui.router"])
                 $scope.loading = true;
                 read.readAsDataURL(file);
             }
+        }
+
+        $scope.testDecode = function() {
+            var manipulator = new Manipulator();
+            manipulator.decode();
         }
     });

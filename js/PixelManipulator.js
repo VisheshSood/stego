@@ -4,7 +4,6 @@ function Manipulator(buffer, width, height){
     this.width = width;
     this.height = height;
     this.isLittleEndian = true;
-    this.getEndianness();
 
     this.buf8 = new Uint8ClampedArray(buffer); //VIEW OF PIXELS
     this.buf32 = new Uint32Array(buffer); //USES INTS.
@@ -18,9 +17,17 @@ function Manipulator(buffer, width, height){
     };
 
     this.decode = function(){
-        console.log("decoded! (not really yet...)");
-    };
 
+        console.log("decoded! (not really yet...)");
+        var finalString = '';
+        var dv = [1, 2, 3];
+
+        for (int i = 0; i < dv.length; i++) {
+
+        }
+        console.log(dv.toString());
+
+    };
 
     /*
     TODO: 
@@ -43,6 +50,8 @@ function Manipulator(buffer, width, height){
         // reset the change
         this.buf32[0] = temp;
     };
+    this.getEndianness();
+
 
     // Sets the pixel at location (x,y) to the given RGBA value
     // assumes that the given (x,y) coordinate is within the image
