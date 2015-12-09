@@ -2,12 +2,26 @@
 <div class="container selector">
     <h2>What would you like to do?</h2>
     <button class="btn btn-default" ng-disabled="true">Encode</button>
-    <button class="btn btn-default" ng-click="">Decode</button>
+    <button class="btn btn-default" ng-click="goToDecode()">Decode</button>
 </div>
 
 
+<div class="container options">
+    <form>
 
-
-<div class="container ">
-
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Upload a file:</h2>
+                <input type="file" accept="image/*" ng-model="uploadedImage" name="imageInput" id="imageInput"/>
+            </div>
+            <div class="col-sm-4">
+                <h3>Type what you want to encode:</h3>
+                <input type="text" class="form-control"/>
+            </div>
+            <div class="col-sm-4">
+                <h3>Click here for the magic!</h3>
+                <button class="btn btn-success" ng-click="">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>

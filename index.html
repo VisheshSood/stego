@@ -20,17 +20,30 @@
 
         <title>Stego</title>
     </head>
-    <body>
-        <header>
-            <img src="resources/stego5.svg">
+    <body ng-app="Stego" ng-controller="StegoController">
+        <header ng-click="goHome()">
+            <h1>Stego</h1>
             <h3>The Steganography Tool</h3>
         </header>
 
-        <div ui-view ng-app="Stego" class="container content"></div>
+        <div ui-view  class="container content">
+
+        </div>
 
         
         <div class="about">
-            <p>About Steganography: origin, history, definition, founder, research, blah blah</p>
+            <h2>About Steganography:</h2>
+            <p>Steganography is the process of concealing data inside images, using various techniques, such as only looking at the LSB or
+                using the alpha channel of an image.
+
+                This practice was first recorded in 1499 by Johannes Trithemius, who hid messages in images, lists and other words.
+
+
+
+                The location of the binary integer that determines whether the number is even or odd is called
+                the least significant bit (LSB).
+
+                origin, history, definition, founder, research, blah blah</p>
             <!--
              About section, that will appear on all pages. These are all the longer sections at the bottom of the page.
              The smaller "what is going on now" sections go into the view pages
@@ -51,7 +64,6 @@
                     </div>
                 </div>
             </div>
-
 
         </footer>
 
