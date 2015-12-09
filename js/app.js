@@ -18,7 +18,20 @@ angular.module("Stego", ["ui.router"])
             });
             $urlRouterProvider.otherwise("/welcome");
     })
-    .controller("StegoController", function($scope){
+    .controller("StegoController", function($scope, $state){
         console.log("Stego is up and running!");
+        $scope.goHome = function() {
+            $state.go('landing');
+            console.log("going home!");
+        }
+
+        $scope.goToEncode = function() {
+            $state.go('encode');
+        }
+
+        $scope.goToDecode = function() {
+            $state.go('decode');
+        }
+
     });
 
