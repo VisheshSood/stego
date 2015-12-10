@@ -29,7 +29,7 @@
 
         <!--<div ui-view ng-app="Stego" class="container content"></div>-->
 
-        <div ng-app="Stego" ng-controller="StegoController">
+        <div ng-app="Stego" ng-controller="StegoController" id="mainDiv">
             <form name="test" ng-submit="submitForm()">
                 <label for="imageInput">Test Upload:</label>
                 <input type="file" name="imageInput" id="imageInput" accept="image/*" ng-model="uploadedImage">

@@ -17,13 +17,12 @@ describe("raw pixel manipulation functions", function(){
         buf32[1] = zeroone;
         buf32[2] = onezero;
         buf32[3] = oneone;
-        console.log(buf32);
-        manipulator = new Manipulator(buf32, 2, 2, true);
+        manipulator = new Manipulator(buffer, 2, 2, true);
     });
 
     it("should return the proper Least Signifigant bit", function(){
         var arr = manipulator.getLsb(0);
-        expect(arr).toEqual([0,0,0]);
+        expect(arr).toEqual([1,0,0]);
         arr = manipulator.getLsb(1);
         expect(arr).toEqual([1,0,0]);
         arr = manipulator.getLsb(2);
@@ -33,10 +32,10 @@ describe("raw pixel manipulation functions", function(){
     });
 
     it("should return the right pixel value", function(){
-        expect(manipulator.getPixel(0)).toEqual(zerozero);
-        expect(manipulator.getPixel(1)).toEqual(zeroone);
-        expect(manipulator.getPixel(2)).toEqual(onezero);
-        expect(manipulator.getPixel(3)).toEqual(oneone);
+        expect(manipulator.getPixel(0)).toEqual([0,0,0,255]);
+        expect(manipulator.getPixel(1)).toEqual([255,0,0,255]);
+        expect(manipulator.getPixel(2)).toEqual([0,255,0,255]);
+        expect(manipulator.getPixel(3)).toEqual([255,255,255,255]);
     });
 
     it("should set the right pixel value", function(){

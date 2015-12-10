@@ -9,13 +9,12 @@ function Manipulator(buffer, width, height){
     this.getEndianness = function() {
         // Determine whether Uint32 is little- or big-endian
         // https://en.wikipedia.org/wiki/Endianness
-        var temp = this.buf32[1];
+        var temp = this.buf32[0];
         this.buf32[0] = 0x0a0b0c0d;
         this.isLittleEndian = !(this.buf8[0] === 0x0a && this.buf8[1] === 0x0b && this.buf8[2] === 0x0c &&
                                 this.buf8[3] === 0x0d);
         // reset the change
         this.buf32[0] = temp;
-        console.log(this.isLittleEndian);
     };
     this.getEndianness();
 
@@ -24,10 +23,6 @@ function Manipulator(buffer, width, height){
     // see http://jsperf.com/canvas-pixel-manipulation for speed test
     this.encode = function(text){
         // PLACE ENCODING CODE BELOW HERE
-        console.log("buf8:");
-        console.log(this.buf8);
-        console.log("buf32:");
-        console.log(this.buf32);
         console.log("encoded! (not really yet...)");
     };
 
@@ -53,12 +48,20 @@ function Manipulator(buffer, width, height){
 
     };
 
+    /*
+        Returns the RGBA representation of the pixel at the given index
+    */
     this.getPixel = function(index){
-        return this.buf32[index];
+        return [this.buf8[index], this.buf8[index+1], this.buf8[index+2], this.buf8[index+3]];
     }
 
+    /*
+        Returns the 3 LSBs from the pixel at the given index.
+        Assumes that index is in valid form (i.e. in the bounds of the array)
+    */
     this.getLsb = function(index){
         var result = [];
+        console.log(this.buf32[index].toString(2));
         // red
         result.push((this.buf32[index]) & 1);
         // blue
