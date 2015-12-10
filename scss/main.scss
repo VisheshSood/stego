@@ -2,38 +2,92 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,300);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 
-$background-main: #E9EAEE;
+$background-main: #292C44;
+$background-alt: #313552;
+$content-main: #F0F0F1;
+$accent: #4F80E1;
 
-body
-{
+body {
 	font-family: "Lato", "Helvetica Neue", Helvetica, Sans-Serif;
 	font-size: 16px;
 	font-weight: 300;
+    background-color: $background-alt;
 }
 
 header {
     background-color: $background-main;
     min-height: 150px;
+    text-align: center;
+    padding-bottom: 2em;
 
     h1, h2, h3 {
         margin-top: 0;
         margin-bottom: 0;
+        font-variant: small-caps;
+        color: $accent;
     }
+    
+    svg {
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-top: 1em;
+        fill: #fff;
+        height: 200px;
+        width: 200px;
+    }
+}
+.selector {
+  h2 {
+    padding-top: 1em;
+  }
 }
 
 .content {
-    background-color: #1D1;
+    background-color: $content-main;
     min-height: 100px;
+    border-radius: 10px;
 }
 
 .about {
-    background-color: #0AA;
-    margin-left: 25px;
-    margin-right: 25px;
+    background-color: $content-main;
     height: 200px;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 10px;
 }
 
 footer {
-    background-color: #A0A;
+    color: #fff;
+    background-color: $background-main;
     height: 3em;
+}
+
+.selector{
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.options {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  p {
+    padding-right: 1em;
+  }
+}
+
+#image-input {
+  margin-left: auto;
+  margin-right: auto;
+  width: 12em;
+}
+
+.centered-content {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  word-break: break-all;
 }
