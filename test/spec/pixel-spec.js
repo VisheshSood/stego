@@ -1,7 +1,7 @@
 describe("raw pixel manipulation functions", function(){
     var manipulator;
     //(0,0,0, 255)
-    var zerozero = 4278190335;
+    var zerozero = 4278190080;
     //(255,0,0, 155)
     var zeroone = 4278190335;
     //(0,255,0, 255)
@@ -22,7 +22,7 @@ describe("raw pixel manipulation functions", function(){
 
     it("should return the proper Least Signifigant bit", function(){
         var arr = manipulator.getLsb(0);
-        expect(arr).toEqual([1,0,0]);
+        expect(arr).toEqual([0,0,0]);
         arr = manipulator.getLsb(1);
         expect(arr).toEqual([1,0,0]);
         arr = manipulator.getLsb(2);
@@ -38,7 +38,4 @@ describe("raw pixel manipulation functions", function(){
         expect(manipulator.getPixel(3)).toEqual([255,255,255,255]);
     });
 
-    it("should set the right pixel value", function(){
-
-    });
 });

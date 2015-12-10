@@ -48,6 +48,8 @@ angular.module("Stego", ["ui.router"])
                     rawData.data.set(manipulator.buf8);
                     context.putImageData(rawData, 0, 0);
                     document.getElementById("mainDiv").appendChild(canvas);
+                    console.log("buf32");
+                    console.log(manipulator.buf32);
                     console.log("Output: (RGBA format)");
                     console.log(data);
                     $scope.loading = false;

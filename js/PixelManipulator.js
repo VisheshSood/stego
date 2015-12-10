@@ -22,12 +22,39 @@ function Manipulator(buffer, width, height){
     // All encoding of the image goes in here
     // see http://jsperf.com/canvas-pixel-manipulation for speed test
     this.encode = function(text){
-        // PLACE ENCODING CODE BELOW HERE
-        console.log("encoded! (not really yet...)");
+        var index = 0;
+        var binary = "";
+        for(index; index < text.length; index++){
+            // should optimize this so we don't allocate new strings all the time
+            binary += this.stringToBinary(text.charCodeAt(index));
+        }
+        // pad extra 0's till binary is a multiple of 3
+        if(binary.length % 3 !== 0){
+            var inner = 0;
+            for(inner; inner < binary.length % 3; inner++){
+                binary += "0";
+            }
+        }
+        // actually encode the string
+        index = 0;
+        var pixelIndex = 0;
+        for(index; index < binary.length; index+=3){
+            this.setLsb(pixelIndex, [binary.charCodeAt(index),
+                                    binary.charCodeAt(index+1),
+                                    binary.charCodeAt(index+2)]);
+            pixelIndex++;
+        }
     };
 
     this.decode = function(){
         console.log("decoded! (not really yet...)");
+    };
+
+    this.stringToBinary = function(charcode){
+        var padded = "00000000";
+        // pad the values if necessary (usually is necessary)
+        var unpaddedBin = text.charCodeAt(index).toString(2);
+        return padded.substring(0, 8 - unpaddedBin.length) + unpaddedBin;
     };
 
     // Sets the pixel at location (x,y) to the given RGBA value
@@ -40,18 +67,26 @@ function Manipulator(buffer, width, height){
          }
     };
 
-    /* Sets the lsb of the pixel at the given index with the given array of 3 bits */
+    /* Sets the lsb of the pixel at the given index with the given array of bits */
     this.setLsb = function(index, bits){
-        /* ------- Error checking omitted for speed reasons
-        if(bits.length > 3){ throw "Can only insert 3 bits at a time."; }
-        */
-
+        var i = 0;
+        for(i; i < bits.length; i++){
+            // for once I actually want == not ===
+            if(bits[i] == 0){
+                // clear bit
+                this.buf32[index] &= ~(1 << i * 8);
+            } else {
+                // or bit
+                this.buf32[index] |= 1 << (i * 8);
+            }
+        }
     };
 
     /*
         Returns the RGBA representation of the pixel at the given index
     */
     this.getPixel = function(index){
+        index *= 4;
         return [this.buf8[index], this.buf8[index+1], this.buf8[index+2], this.buf8[index+3]];
     }
 
@@ -61,7 +96,6 @@ function Manipulator(buffer, width, height){
     */
     this.getLsb = function(index){
         var result = [];
-        console.log(this.buf32[index].toString(2));
         // red
         result.push((this.buf32[index]) & 1);
         // blue
