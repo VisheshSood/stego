@@ -29,10 +29,10 @@ angular.module("Stego", ["ui.router"])
                 var read = new FileReader();
                 read.onloadend = function(e){
                     //get the url result
-                    var data = read.result
+                    var result = read.result;
                     // put that url in an img element
                     var imageElement = document.createElement("img");
-                    imageElement.setAttribute("src", data);
+                    imageElement.setAttribute("src", result);
 
                     // put that image into a canvas
                     var canvas = document.createElement('canvas');
@@ -47,9 +47,8 @@ angular.module("Stego", ["ui.router"])
                     manipulator.encode("test");
                     rawData.data.set(manipulator.buf8);
                     context.putImageData(rawData, 0, 0);
-                    document.getElementById("mainDiv").appendChild(canvas);
-                    console.log("buf32");
-                    console.log(manipulator.buf32);
+                    imageElement.setAttribute("src", canvas.toDataURL().toString());
+                    document.getElementById("mainDiv").appendChild(imageElement);
                     console.log("Output: (RGBA format)");
                     console.log(data);
                     $scope.loading = false;

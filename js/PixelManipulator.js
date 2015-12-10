@@ -38,10 +38,10 @@ function Manipulator(buffer, width, height){
         // actually encode the string
         index = 0;
         var pixelIndex = 0;
-        for(index; index < binary.length; index+=3){
+        for(index; index < binary.length; index+=3) {
             this.setLsb(pixelIndex, [binary.charCodeAt(index),
-                                    binary.charCodeAt(index+1),
-                                    binary.charCodeAt(index+2)]);
+                                    binary.charCodeAt(index + 1),
+                                    binary.charCodeAt(index + 2)]);
             pixelIndex++;
         }
     };
@@ -53,7 +53,7 @@ function Manipulator(buffer, width, height){
     this.stringToBinary = function(charcode){
         var padded = "00000000";
         // pad the values if necessary (usually is necessary)
-        var unpaddedBin = text.charCodeAt(index).toString(2);
+        var unpaddedBin = charcode.toString(2);
         return padded.substring(0, 8 - unpaddedBin.length) + unpaddedBin;
     };
 
@@ -88,7 +88,7 @@ function Manipulator(buffer, width, height){
     this.getPixel = function(index){
         index *= 4;
         return [this.buf8[index], this.buf8[index+1], this.buf8[index+2], this.buf8[index+3]];
-    }
+    };
 
     /*
         Returns the 3 LSBs from the pixel at the given index.
