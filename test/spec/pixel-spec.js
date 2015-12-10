@@ -31,11 +31,19 @@ describe("raw pixel manipulation functions", function(){
         expect(arr).toEqual([1,1,1]);
     });
 
-    it("should return the right pixel value", function(){
-        expect(manipulator.getPixel(0)).toEqual([0,0,0,255]);
-        expect(manipulator.getPixel(1)).toEqual([255,0,0,255]);
-        expect(manipulator.getPixel(2)).toEqual([0,255,0,255]);
-        expect(manipulator.getPixel(3)).toEqual([255,255,255,255]);
-    });
+    it("converts an array of bits into appropriate bytes", function() {
+        var array = [0,1,0,1,0,1,0,0,0,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,0,1,1,1,0,0,1,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1];
+        var value =  manipulator.arrayToBinary(array);
+        expect(value).toEqual('01010100 01101000 01101001 01110011 00100000 01101001 01110011 00100000 01100001 00100000 01110100 01100101 01110011 01110100 00100001 ');
+    })
 
+    it("decodes the bits into string", function() {
+        var string = '01000001';
+        var value = manipulator.convertBinaryToString(string);
+        expect(value).toEqual('A');
+        var string = '' + '01010100 01101000 01101001 01110011 00100000 01101001 01110011 00100000 01100001 00100000 01110100 01100101 01110011 01110100 00100001';
+        var value = manipulator.convertBinaryToString(string);
+        expect(value).toEqual('This is a test!');
+
+    })  
 });

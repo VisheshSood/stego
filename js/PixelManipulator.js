@@ -18,7 +18,6 @@ function Manipulator(buffer, width, height){
     };
     this.getEndianness();
 
-
     // All encoding of the image goes in here
     // see http://jsperf.com/canvas-pixel-manipulation for speed test
     this.encode = function(text){
@@ -46,18 +45,50 @@ function Manipulator(buffer, width, height){
         }
     };
 
-    this.decode = function(){
+    this.decode = function() {
         console.log("decoded! (not really yet...)");
+        var finalBinary;
+        //replace this array with the incoming data.
+        var array = [0,1,0,1,0,1,0,0,0,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,0,1,1,1,0,0,1,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1];
+        finalBinary = this.arrayToBinary(array);
+        var finalString = '';
+        console.log(''+ this.convertBinaryToString(finalBinary))
+
     };
 
-    this.stringToBinary = function(charcode){
+    this.stringToBinary = function(charcode) {
         var padded = "00000000";
         // pad the values if necessary (usually is necessary)
         var unpaddedBin = charcode.toString(2);
         return padded.substring(0, 8 - unpaddedBin.length) + unpaddedBin;
     };
 
-    // Sets the pixel at location (x,y) to the given RGBA value
+    this.arrayToBinary = function (array) {
+        var binaryString = '';
+        var spacecount = 0;
+        for (var i = 0; i < array.length; i++) {
+            binaryString += array[i];
+            spacecount++;
+            if (spacecount == 8) {
+                binaryString += " ";
+                spacecount = 0;
+            }
+        }
+        return binaryString;
+    };
+
+    this.convertBinaryToString = function(binary) {
+        var returnValue = "";
+        var res = binary.split(" ");
+        for (var i = 0; i < res.length; i++) 
+        {
+            var value  = parseInt(res[i],2).toString(10);
+            returnValue += String.fromCharCode(value);
+        }
+        return returnValue;
+    };
+
+    /// Sets the pixel at location (x,y) to the given RGBA value
     // assumes that the given (x,y) coordinate is within the image
     this.setPixel = function(index, r, g, b, a){
         if(this.isLittleEndian){
@@ -90,10 +121,11 @@ function Manipulator(buffer, width, height){
         return [this.buf8[index], this.buf8[index+1], this.buf8[index+2], this.buf8[index+3]];
     };
 
-    /*
-        Returns the 3 LSBs from the pixel at the given index.
-        Assumes that index is in valid form (i.e. in the bounds of the array)
-    */
+
+    this.getPixel = function(index){
+        return this.buf32[index];
+    };
+
     this.getLsb = function(index){
         var result = [];
         // red
