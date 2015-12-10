@@ -1,23 +1,31 @@
 <!-- Decoding of text from image -->
-<div class="container selector">
-    <h2>What would you like to do?</h2>
-    <button class="btn btn-default" ng-click="goToEncode()">Encode</button>
-    <button class="btn btn-default" ng-disabled="true">Decode</button>
-</div>
+<div class="content">
+    <div class="container selector">
+        <h2>What would you like to do?</h2>
+        <button class="btn btn-default" ng-click="goToEncode()">Encode</button>
+        <button class="btn btn-default" ng-disabled="true">Decode</button>
+    </div>
 
 
-<div class="container options" >
-    <form>
-        <div class="row">
-            <div class="col-sm-6">
-                <h2>Upload a file:</h2>
-                <input type="file" accept="image/*" ng-model="uploadedImage" name="imageInput" id="imageInput"/>
+    <div class="container options" >
+        <form>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Upload a file:</h3>
+                    <input type="file" accept="image/*" ng-model="uploadedImage" name="image-input" id="image-input"/>
+                    <h4>First, we take the file and look at the LSB in each pixel and collect them into an array</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Click here to decode!</h3>
+                    <button class="btn btn-primary" ng-click="decode()">Decode Image</button>
+                    <h4>We then take the contents of the array and convert them to text</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Here's the secret message:</h3>
+                    <p id="output-text"></p>
+                </div>
+
             </div>
-            <div class="col-sm-6">
-                <h3>Here's the secret message:</h3>
-                <p>insert message here </p>
-            </div>
-
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

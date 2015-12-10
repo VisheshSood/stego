@@ -1,29 +1,53 @@
 <!-- Landing page for the site, first thing anyone sees -->
+<div class="content container">
+    <div class="selector">
+        <h2>What would you like to do?</h2>
+        <button class="btn btn-default" ng-click="goToEncode()">Encode</button>
+        <button class="btn btn-default" ng-click="goToDecode()">Decode</button>
+    </div>
 
-<div class="container selector">
-    <h2>What would you like to do?</h2>
-    <button class="btn btn-default" ng-click="goToEncode()">Encode</button>
-    <button class="btn btn-default" ng-click="goToDecode()">Decode</button>
-</div>
+    <div class="options">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Encode</h2>
+                <h4>Encode a message into a picture you upload here. Send it to friends, and have them use our decode tool to see your secret message!</h4>
+            </div>
 
-<div class="container options">
-    <div class="row">
-        <div class="col-sm-6">
-            <h2>Encode</h2>
-            <h4>Encode a message into a picture you upload here. Send it to friends, and have them use our decode tool to see your secret message!</h4>
-        </div>
+            <!--<div class="col-sm-4">-->
+                <!--<h3>Step 2: Save the Picture </h3>-->
+                <!--<p>Since we altered something so small, it is undetectable to the human eye.</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4">-->
+                <!--<h3>Step 3: Decode the Hidden Information</h3>-->
+                <!--<p>We can see what we've altered in the LSB and use that to decode the message.</p>-->
 
-        <!--<div class="col-sm-4">-->
-            <!--<h3>Step 2: Save the Picture </h3>-->
-            <!--<p>Since we altered something so small, it is undetectable to the human eye.</p>-->
-        <!--</div>-->
-        <!--<div class="col-sm-4">-->
-            <!--<h3>Step 3: Decode the Hidden Information</h3>-->
-            <!--<p>We can see what we've altered in the LSB and use that to decode the message.</p>-->
-
-        <div class="col-sm-6">
-            <h2>Decode</h2>
-            <h4>Did you have a picture that was encoded with a message? Upload the image using our Decode tool to reveal the hidden text!</h4>
+            <div class="col-sm-6">
+                <h2>Decode</h2>
+                <h4>Did you have a picture that was encoded with a message? Upload the image using our Decode tool to reveal the hidden text!</h4>
+            </div>
         </div>
     </div>
+
+    <div class="options">
+        <div class="about">
+            <h2>About Steganography:</h2>
+            <h4>Steganography is the process of concealing data inside images, using various techniques, such as only looking at the LSB or
+                using the alpha channel of an image. This practice was first recorded in 1499 by Johannes Trithemius, who hid messages in
+                images, lists and other words.
+                <br/> <br/>
+
+                The location of the binary integer that determines whether the number is even or odd is called
+                the <a href="https://en.wikipedia.org/wiki/Least_significant_bit"> least significant bit (LSB)</a>. Using the LSB allows us to
+                store binary data while only modifying the color of the pixel by 1 value.<br/> <br/>
+
+                Source and <a href="https://en.wikipedia.org/wiki/Steganography">additional information</a>
+            </h4>
+            <!--
+             About section, that will appear on all pages. These are all the longer sections at the bottom of the page.
+             The smaller "what is going on now" sections go into the view pages
+             -->
+        </div>
+
+    </div>
+
 </div>

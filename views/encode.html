@@ -1,27 +1,37 @@
 <!-- Page to allow for encoding of text into an image -->
-<div class="container selector">
-    <h2>What would you like to do?</h2>
-    <button class="btn btn-default" ng-disabled="true">Encode</button>
-    <button class="btn btn-default" ng-click="goToDecode()">Decode</button>
-</div>
+<div class="content">
+    <div class="container selector">
+        <h2>What would you like to do?</h2>
+        <button class="btn btn-default" ng-disabled="true">Encode</button>
+        <button class="btn btn-default" ng-click="goToDecode()">Decode</button>
+    </div>
 
 
-<div class="container options">
-    <form>
+    <div class="container">
+        <form>
 
-        <div class="row">
-            <div class="col-sm-4">
-                <h3>1. Upload a file:</h3>
-                <input type="file" accept="image/*" ng-model="uploadedImage" name="imageInput" id="imageInput"/>
+            <div class="row ">
+                <div class="col-sm-4">
+                    <h3>1. Type what you want to encode:</h3>
+                    <input type="text" id="encoding-text" class="form-control"/>
+                    <h4><br/>We convert the message you want to encode into binary</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h3>2. Upload a file:</h3>
+                    <input type="file" accept="image/*" ng-model="uploadedImage" name="image-input" id="image-input"/>
+                    <h4><br/>Then, we alter the LSB in each pixel of the image to match the binary code</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h3>3. Click to encode text!</h3>
+                    <button class="btn btn-success" ng-click="">Encode</button>
+                    <h4><br/>Finally, we put all the pixels together and you have an encoded image!</h4>
+                </div>
+                <div class="centered-content">
+                    <button class="btn btn-primary" ng-click="">Download</button>
+                    <img id="output-image" src="" alt=""/>
+                </div>
+                <img src="../resources/encode.png" alt="encoding process">
             </div>
-            <div class="col-sm-4">
-                <h3>2. Type what you want to encode:</h3>
-                <input type="text" class="form-control"/>
-            </div>
-            <div class="col-sm-4">
-                <h3>3. Click the magic button!</h3>
-                <button class="btn btn-success" ng-click="">Magic Button</button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
