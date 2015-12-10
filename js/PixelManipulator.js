@@ -29,7 +29,7 @@ function Manipulator(buffer, width, height){
 
     };
 
-    function arrayToBinary(array) {
+    function arrayToBinary (array) {
         var binaryString = '';
         var spacecount = 0;
         for (var i = 0; i < array.length; i++)
@@ -42,7 +42,6 @@ function Manipulator(buffer, width, height){
             }
 
         }
-
 
         return binaryString;
 
