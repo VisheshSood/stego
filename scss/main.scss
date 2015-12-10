@@ -2,47 +2,59 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,300);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 
-$background-main: #E9EAEE;
+$background-main: #292C44;
+$background-alt: #313552;
+$content-main: #F0F0F1;
+$accent: #4F80E1;
 
 body
 {
 	font-family: "Lato", "Helvetica Neue", Helvetica, Sans-Serif;
 	font-size: 16px;
 	font-weight: 300;
+    background-color: $background-alt;
 }
 
 header {
     background-color: $background-main;
     min-height: 150px;
     text-align: center;
+    padding-bottom: 2em;
 
     h1, h2, h3 {
         margin-top: 0;
         margin-bottom: 0;
+        font-variant: small-caps;
+        color: $accent;
     }
     
     svg {
-        margin: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-top: 1em;
         fill: #fff;
-        height: 100px;
-        width: 100px;
+        height: 200px;
+        width: 200px;
     }
 }
 
 .content {
-    background-color: #1D1;
+    background-color: $content-main;
     min-height: 100px;
+    padding: inherit;
+    border-radius: 10px;
 }
 
 .about {
-    background-color: #A00;
-    margin-left: 25px;
-    margin-right: 25px;
+    background-color: $content-main;
     height: 200px;
+    padding: inherit;
+    border-radius: 10px;
 }
 
 footer {
-    background-color: #A0A;
+    color: #fff;
+    background-color: $background-main;
     height: 3em;
 }
 
@@ -51,5 +63,7 @@ footer {
 }
 
 .options {
-  margin-bottom: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
 }
