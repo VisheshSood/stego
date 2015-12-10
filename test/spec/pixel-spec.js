@@ -37,7 +37,7 @@ describe("raw pixel manipulation functions", function(){
     })
 
     it("decodes the bits into string", function() {
-        
-    })
+        expect(convertBinaryToString(01000001)).toEqual('A');
+        expect(convertBinaryToString(01010100 01101000 01101001 01110011 00100000 01101001 01110011 00100000 01100001 00100000 01110100 01100101 01110011 01110100 00100001).toEqual('This is a test!'));
 
 });

@@ -20,17 +20,23 @@ function Manipulator(buffer, width, height){
 
         console.log("decoded! (not really yet...)");
         var finalBinary;
-        finalBinary = 101010101110;
+        finalBinary = 10110;
         var finalString = '';
 
 
-        console.log(parseInt(finalBinary,2).toString(10))
-
-        //Need code to convert final binary into string. 
-        var dv = [1,3,4];
-        console.log(dv.toString());
+        console.log(''+ convertBinaryToString('01010100 01101000 01101001 01110011 00100000 01101001 01110011 00100000 01100001 00100000 01110100 01100101 01110011 01110100 00100001'))
 
     };
+
+    function convertBinaryToString(binary) {
+        var returnValue = "";
+        var res = binary.split(" ");
+        for (var i = 0; i < res.length; i++) {
+            var value  = parseInt(res[i],2).toString(10);
+            returnValue += String.fromCharCode(value);
+        }
+        return returnValue;
+    }
 
     /*
     TODO: 
