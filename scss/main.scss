@@ -7,8 +7,7 @@ $background-alt: #313552;
 $content-main: #F0F0F1;
 $accent: #4F80E1;
 
-body
-{
+body {
 	font-family: "Lato", "Helvetica Neue", Helvetica, Sans-Serif;
 	font-size: 16px;
 	font-weight: 300;
@@ -37,7 +36,11 @@ header {
         width: 200px;
     }
 }
-
+.selector {
+  h2 {
+    padding-top: 1em;
+  }
+}
 
 .content {
     background-color: $content-main;
@@ -69,21 +72,27 @@ footer {
     margin-top: 1em;
     margin-bottom: 1em;
     text-align: center;
+  p {
+    padding-right: 1em;
+  }
 }
 
 #image-input {
   margin-left: auto;
   margin-right: auto;
   width: 12em;
-
 }
 
 .centered-content {
   margin-left: auto;
   margin-right: auto;
+}
 
 }
 
 img {
     width: 100%;
+    
+p {
+  word-break: break-all;
 }
