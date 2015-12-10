@@ -25,6 +25,7 @@ gulp.task("watch", function() {
     gulp.watch("views/*.html", ["copy"]);
     gulp.watch("index.html", ["copy"]);
     gulp.watch("js/*.js", ["copy"]);
+    gulp.watch("resources/*", ["copy"]);
 });
 
 gulp.task("copy", function() {
@@ -36,6 +37,9 @@ gulp.task("copy", function() {
         .pipe(connect.reload());
     gulp.src("views/*")
         .pipe(gulp.dest("dist/views"))
+        .pipe(connect.reload());
+    gulp.src("resources/*")
+        .pipe(gulp.dest("dist/resources"))
         .pipe(connect.reload());
 });
 
