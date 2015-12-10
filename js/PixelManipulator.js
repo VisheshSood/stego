@@ -16,13 +16,20 @@ function Manipulator(buffer, width, height){
     };
 
     this.decode = function() {
-        console.log("decoded! (not really yet...)");
+
         var finalBinary;
-        //replace this array with the incoming data.
-        var array = [0,1,0,1,0,1,0,0,0,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,0,1,1,1,0,0,1,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1];
+        var finalArray = [];
+        var array = [0,0,0,0,0,0,0,0,0,1];
+        this.buf32 = array;
+        for (var i = 0; i < this.buf32.length; i++) {
+            var tempArray = this.getLsb(i);
+            for (var j = 0; j < 3; j++) {
+                finalArray += tempArray[j];
+            }
+        }
+        array = finalArray;
         finalBinary = this.arrayToBinary(array)
         var finalString = '';
-        console.log(''+ this.convertBinaryToString(finalBinary))
 
     };
 
