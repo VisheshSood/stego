@@ -16,20 +16,20 @@ function Manipulator(buffer, width, height){
         console.log("encoded! (not really yet...)");
     };
 
-    this.decode = function(){
+    this.decode = function() {
 
         console.log("decoded! (not really yet...)");
         var finalBinary;
         var array = [0,1,0,1,0,1,0,0,0,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,0,1,1,1,0,0,1,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1];
-        finalBinary = arrayToBinary(array)
+        finalBinary = this.arrayToBinary(array)
         var finalString = '';
 
 
-        console.log(''+ convertBinaryToString(finalBinary))
+        console.log(''+ this.convertBinaryToString(finalBinary))
 
     };
 
-    function arrayToBinary (array) {
+    this.arrayToBinary = function (array) {
         var binaryString = '';
         var spacecount = 0;
         for (var i = 0; i < array.length; i++)
@@ -47,7 +47,7 @@ function Manipulator(buffer, width, height){
 
     }
 
-    function convertBinaryToString(binary) {
+    this.convertBinaryToString = function(binary) {
         var returnValue = "";
         var res = binary.split(" ");
         for (var i = 0; i < res.length; i++) 
