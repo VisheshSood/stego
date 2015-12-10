@@ -7,7 +7,6 @@ function Manipulator(buffer, width, height){
 
     this.buf8 = new Uint8ClampedArray(buffer); //VIEW OF PIXELS
     this.buf32 = new Uint32Array(buffer); //USES INTS.
-    //CANT WRITE TO BUFFER.
 
     // All encoding of the image goes in here
     // see http://jsperf.com/canvas-pixel-manipulation for speed test
@@ -17,15 +16,12 @@ function Manipulator(buffer, width, height){
     };
 
     this.decode = function() {
-
         console.log("decoded! (not really yet...)");
         var finalBinary;
         //replace this array with the incoming data.
         var array = [0,1,0,1,0,1,0,0,0,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,0,1,1,1,0,0,1,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1];
         finalBinary = this.arrayToBinary(array)
         var finalString = '';
-
-
         console.log(''+ this.convertBinaryToString(finalBinary))
 
     };
@@ -41,11 +37,8 @@ function Manipulator(buffer, width, height){
                 binaryString += " ";
                 spacecount = 0;
             }
-
         }
-
         return binaryString;
-
     }
 
     this.convertBinaryToString = function(binary) {
@@ -58,14 +51,6 @@ function Manipulator(buffer, width, height){
         }
         return returnValue;
     }
-
-    /*
-    TODO: 
-        - LOOP OVER ARRAY OF PIXELS (UINT32)
-        - GET LSB OF EACH PIXEL
-        - RETURNS LSB OF EACH PIXEL
-        - KEEP TRACK AND ADD, AND THEN OUTPUT THE STRING.
-    */
 
     this.getEndianness = function() {
         // Determine whether Uint32 is little- or big-endian
