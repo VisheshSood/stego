@@ -13,22 +13,22 @@
             <div class="row ">
                 <div class="col-sm-4">
                     <h3>1. Type what you want to encode:</h3>
-                    <input type="text" class="form-control"/>
-                    <h4><br/>Convert the message you want to encode into binary</h4>
+                    <input type="text" id="encoding-text" class="form-control"/>
+                    <h4><br/>We convert the message you want to encode into binary</h4>
                 </div>
                 <div class="col-sm-4">
                     <h3>2. Upload a file:</h3>
                     <input type="file" accept="image/*" ng-model="uploadedImage" name="image-input" id="image-input"/>
-                    <h4><br/>Alter the LSB in each pixel of the image to match the binary code</h4>
+                    <h4><br/>Then, we alter the LSB in each pixel of the image to match the binary code</h4>
                 </div>
                 <div class="col-sm-4">
                     <h3>3. Click to encode text!</h3>
                     <button class="btn btn-success" ng-click="">Encode</button>
-                    <h4><br/>Put all the pixels together and you have an encoded image!</h4>
+                    <h4><br/>Finally, we put all the pixels together and you have an encoded image!</h4>
                 </div>
                 <div class="centered-content">
                     <button class="btn btn-primary" ng-click="">Download</button>
-                    <img src="" alt=""/>
+                    <img id="output-image" src="" alt=""/>
                 </div>
                 <img src="../resources/encode.png" alt="encoding process">
             </div>
