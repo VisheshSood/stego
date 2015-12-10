@@ -20,18 +20,39 @@ function Manipulator(buffer, width, height){
 
         console.log("decoded! (not really yet...)");
         var finalBinary;
-        finalBinary = 10110;
+        var array = [0,1,0,1,0,1,0,0,0,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,0,1,1,1,0,0,1,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1];
+        finalBinary = arrayToBinary(array)
         var finalString = '';
 
 
-        console.log(''+ convertBinaryToString('01010100 01101000 01101001 01110011 00100000 01101001 01110011 00100000 01100001 00100000 01110100 01100101 01110011 01110100 00100001'))
+        console.log(''+ convertBinaryToString(finalBinary))
 
     };
+
+    function arrayToBinary(array) {
+        var binaryString = '';
+        var spacecount = 0;
+        for (var i = 0; i < array.length; i++)
+        {
+            binaryString += array[i];
+            spacecount++;
+            if (spacecount == 8) {
+                binaryString += " ";
+                spacecount = 0;
+            }
+
+        }
+
+
+        return binaryString;
+
+    }
 
     function convertBinaryToString(binary) {
         var returnValue = "";
         var res = binary.split(" ");
-        for (var i = 0; i < res.length; i++) {
+        for (var i = 0; i < res.length; i++) 
+        {
             var value  = parseInt(res[i],2).toString(10);
             returnValue += String.fromCharCode(value);
         }
