@@ -20,6 +20,7 @@ function Manipulator(buffer, width, height){
 
         console.log("decoded! (not really yet...)");
         var finalBinary;
+        //replace this array with the incoming data.
         var array = [0,1,0,1,0,1,0,0,0,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,0,1,1,1,0,0,1,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1];
         finalBinary = this.arrayToBinary(array)
         var finalString = '';
@@ -81,19 +82,45 @@ function Manipulator(buffer, width, height){
     };
     this.getEndianness();
 
-    // Sets the pixel at location (x,y) to the given RGBA value
+    /// Sets the pixel at location (x,y) to the given RGBA value
     // assumes that the given (x,y) coordinate is within the image
-    this.setPixel = function(x, y, r, g, b, a){
+    this.setPixel = function(index, r, g, b, a){
         if(this.isLittleEndian){
-            this.buf32[y * width + x] = (a << 24) | (b << 16) | (g << 8) | r;
+            this.buf32[index] = (a << 24) | (b << 16) | (g << 8) | r;
          } else {
-            this.buf32[y * width + x] = (r << 24) | (g << 16) | (b << 8) | a;
+            this.buf32[index] = (r << 24) | (g << 16) | (b << 8) | a;
          }
     };
 
-    this.getLsb = function(x, y, colorIndex){
-        /* add 0-2 for RGB respectively */
-        if(colorIndex < 0 || colorIndex >= 3){ throw "Color index must be between 0 and 3 (R, G, or B respectively)";}
+    /* Sets the lsb of the pixel at the given index with the given array of 3 bits */
+    this.setLsb = function(index, bits){
+        /* ------- Error checking omitted for speed reasons
+        if(bits.length > 3){ throw "Can only insert 3 bits at a time."; }
+        */
 
+    };
+
+    this.getPixel = function(index){
+        return this.buf32[index];
     }
+
+    this.getLsb = function(index){
+        var result = [];
+        // red
+        result.push((this.buf32[index]) & 1);
+        // blue
+        result.push((this.buf32[index] >> 8) & 1);
+        // green
+        result.push((this.buf32[index] >> 16) & 1);
+        return result;
+    };
+
+    this.getLsbColor = function(index, colorIndex){
+        /*  ------ Error checking omitted for speed reasons
+        // add 0-2 for RGB respectively
+        if(colorIndex < 0 || colorIndex >= 3){ throw "Color index must be between 0 and 3 (R, G, or B respectively)";}
+        */
+        console.log("got lsb of: "+this.buf8[index * 4 + colorIndex] + " as: "+this.buf8[index * 4 + colorIndex] & 1);
+        return this.buf8[index * 4 + colorIndex] & 1;
+    };
 }
