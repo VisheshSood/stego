@@ -37,43 +37,23 @@
             <h2>the steganography tool</h2>
         </header>
 
-        <div ui-view  class="container content"></div>
+        <div ui-view  class="container"></div>
 
-        <div class="container options">
+        <div class="container selector">
             <div class="about">
                 <h2>How it works: </h2>
                 <div class="col-sm-4">
                     <h3>Step 1: Encode Each Pixel</h3>
                     <p>We alter the Least Significant Bit (see info section below) to include more information.</p>
                 </div>
-            <div class="col-sm-4">
-                <h3>Step 2: Alter the Picture</h3>
-                <p>Since we altered something so small, it is undetectable to the human eye.</p>
-            </div>
-            <div class="col-sm-4">
-                <h3>Step 3: Decode the Hidden Information</h3>
-                <p>We can see what we've altered in the LSB and use that to decode the message.</p>
-            </div>
-            </div>
-        </div>
-        
-        <div class="container options">
-            <div class="about">
-                <h2>About Steganography:</h2>
-                <h4>Steganography is the process of concealing data inside images, using various techniques, such as only looking at the LSB or
-                    using the alpha channel of an image. This practice was first recorded in 1499 by Johannes Trithemius, who hid messages in
-                    images, lists and other words.
-                    <br/> <br/>
-
-                    The location of the binary integer that determines whether the number is even or odd is called
-                    the least significant bit (LSB). <br/> <br/>
-
-                    Source and <a href="https://en.wikipedia.org/wiki/Steganography">additional information</a>
-                </h4>
-                <!--
-                 About section, that will appear on all pages. These are all the longer sections at the bottom of the page.
-                 The smaller "what is going on now" sections go into the view pages
-                 -->
+                <div class="col-sm-4">
+                    <h3>Step 2: Alter the Picture</h3>
+                    <p>Since we altered something so small, it is undetectable to the human eye.</p>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Step 3: Decode the Hidden Information</h3>
+                    <p>We can see what we've altered in the LSB and use that to decode the message.</p>
+                </div>
             </div>
         </div>
 
@@ -83,7 +63,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
-                        <a href="https://github.com/VisheshSood/stego">Our Github:</a>
+                        <a href="https://github.com/VisheshSood/stego">Our Github</a>
                     </div>
                     <div class="col-sm-9">
                         <p>This project was brought to you by Cameron Doane, Anya Hsu, Justin
