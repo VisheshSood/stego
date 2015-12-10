@@ -38,10 +38,16 @@ function Manipulator(buffer, width, height){
         index = 0;
         var pixelIndex = 0;
         for(index; index < binary.length; index+=3) {
-            this.setLsb(pixelIndex, [binary.charCodeAt(index),
-                                    binary.charCodeAt(index + 1),
-                                    binary.charCodeAt(index + 2)]);
+            var bits = [];
+            bits.push(binary.charCodeAt(index) === 48 ? 0 : 1);
+            bits.push(binary.charCodeAt(index + 1) === 48 ? 0 : 1);
+            bits.push(binary.charCodeAt(index + 2) === 48 ? 0 : 1);
+
+            this.setLsb(pixelIndex, bits);
             pixelIndex++;
+        }
+        for(pixelIndex; pixelIndex < this.buf32.length; pixelIndex++){
+            this.setLsb(pixelIndex, [0,0,0]);
         }
     };
 
@@ -53,7 +59,7 @@ function Manipulator(buffer, width, height){
             var tempArray = this.getLsb(i);
             var j = 0;
             for (j; j < tempArray.length; j++) {
-                finalArray += tempArray[j];
+                finalArray.push(tempArray[j]);
             }
         }
         finalBinary = this.arrayToBinary(finalArray);

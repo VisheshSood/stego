@@ -23,8 +23,8 @@ angular.module("Stego", ["ui.router"])
 
         $scope.loading = false;
         //DO NOT TOUCH THIS!
-        $scope.submitForm = function(){
-            var file = document.getElementById("imageInput").files[0];
+        $scope.encode = function(){
+            var file = document.getElementById("image-input").files[0];
             if(file){
                 var read = new FileReader();
                 read.onloadend = function(e){
@@ -47,7 +47,7 @@ angular.module("Stego", ["ui.router"])
                     manipulator.encode(document.getElementById("encoding-text").value);
                     rawData.data.set(manipulator.buf8);
                     context.putImageData(rawData, 0, 0);
-                    document.getElementById("outputImage").setAttribute("src", canvas.toDataURL().toString());
+                    document.getElementById("output-image").setAttribute("src", canvas.toDataURL().toString());
                     $scope.loading = false;
                 };
                 $scope.loading = true;
@@ -56,7 +56,7 @@ angular.module("Stego", ["ui.router"])
         };
 
         $scope.decode = function () {
-            var file = document.getElementById("imageInput").files[0];
+            var file = document.getElementById("image-input").files[0];
             if(file){
                 var read = new FileReader();
                 read.onloadend = function(e){
@@ -79,7 +79,7 @@ angular.module("Stego", ["ui.router"])
                     var output = manipulator.decode();
                     rawData.data.set(manipulator.buf8);
                     context.putImageData(rawData, 0, 0);
-                    document.getElementById("outputText").innerHTML(output);
+                    document.getElementById("output-text").innerHTML = output;
                     $scope.loading = false;
                 };
                 $scope.loading = true;
