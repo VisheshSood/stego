@@ -43,9 +43,7 @@ angular.module("Stego", ["ui.router"])
                     var rawData = context.getImageData(0, 0, canvas.width, canvas.height);
                     // getting a reference to the data to speed up references
                     var data = rawData.data;
-                    console.log(data);
-
-                    var manipulator = new Manipulator(data, canvas.width, canvas.height);
+                    var manipulator = new Manipulator(data.buffer, canvas.width, canvas.height);
                     manipulator.encode("test");
                     rawData.data.set(manipulator.buf8);
                     context.putImageData(rawData, 0, 0);
