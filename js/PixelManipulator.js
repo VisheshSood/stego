@@ -48,6 +48,7 @@ function Manipulator(buffer, width, height){
     this.decode = function() {
         console.log("decoded! (not really yet...)");
         var finalBinary;
+        //iterate over buf32
         //replace this array with the incoming data.
         var array = [0,1,0,1,0,1,0,0,0,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0,1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,0,1,1,1,0,0,1,1,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1];
         finalBinary = this.arrayToBinary(array);

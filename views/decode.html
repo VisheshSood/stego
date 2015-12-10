@@ -1,1 +1,23 @@
 <!-- Decoding of text from image -->
+<div class="container selector">
+    <h2>What would you like to do?</h2>
+    <button class="btn btn-default" ng-click="goToEncode()">Encode</button>
+    <button class="btn btn-default" ng-disabled="true">Decode</button>
+</div>
+
+
+<div class="container options" >
+    <form>
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Upload a file:</h2>
+                <input type="file" accept="image/*" ng-model="uploadedImage" name="imageInput" id="imageInput"/>
+            </div>
+            <div class="col-sm-6">
+                <h3>Here's the secret message:</h3>
+                <p>insert message here </p>
+            </div>
+
+        </div>
+    </form>
+</div>

@@ -1,1 +1,27 @@
 <!-- Page to allow for encoding of text into an image -->
+<div class="container selector">
+    <h2>What would you like to do?</h2>
+    <button class="btn btn-default" ng-disabled="true">Encode</button>
+    <button class="btn btn-default" ng-click="goToDecode()">Decode</button>
+</div>
+
+
+<div class="container options">
+    <form>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>1. Upload a file:</h3>
+                <input type="file" accept="image/*" ng-model="uploadedImage" name="imageInput" id="imageInput"/>
+            </div>
+            <div class="col-sm-4">
+                <h3>2. Type what you want to encode:</h3>
+                <input type="text" class="form-control"/>
+            </div>
+            <div class="col-sm-4">
+                <h3>3. Click the magic button!</h3>
+                <button class="btn btn-success" ng-click="">Magic Button</button>
+            </div>
+        </div>
+    </form>
+</div>

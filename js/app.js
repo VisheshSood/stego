@@ -55,6 +55,20 @@ angular.module("Stego", ["ui.router"])
                 };
                 $scope.loading = true;
                 read.readAsDataURL(file);
+
             }
         };
+
+        $scope.goHome = function() {
+            $state.go('landing');
+        };
+
+        $scope.goToEncode = function() {
+            $state.go('encode');
+        };
+
+        $scope.goToDecode = function() {
+            $state.go('decode');
+        };
     });
+
