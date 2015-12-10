@@ -39,4 +39,5 @@ describe("raw pixel manipulation functions", function(){
     it("decodes the bits into string", function() {
         
     })
+
 });
