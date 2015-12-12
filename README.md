@@ -13,3 +13,11 @@ Steganography is the act of concealing data inside of images, using various tech
 
 ## What does this site do?
 This site offers users the chance to encode text into any image, as well as the ability to analyze a given image for previously hidden text.
+
+## How to run this project
+* Clone the project into a local directory
+* Install all dependencies:
+  * Install [node.js](https://nodejs.org/en/)
+  * run `npm install -g gulp`
+  * run `npm install`
+* Finally, run  `gulp` and open a web browser to localhost:8080

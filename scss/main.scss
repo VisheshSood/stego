@@ -19,6 +19,7 @@ header {
     min-height: 150px;
     text-align: center;
     padding-bottom: 2em;
+    cursor: pointer;
 
     h1, h2, h3 {
         margin-top: 0;
@@ -26,7 +27,7 @@ header {
         font-variant: small-caps;
         color: $accent;
     }
-    
+
     svg {
         margin-left: 1em;
         margin-right: 1em;
@@ -36,6 +37,12 @@ header {
         width: 200px;
     }
 }
+
+.example {
+    width: 100%;
+    padding: 1em;
+}
+
 .selector {
   h2 {
     padding-top: 1em;
@@ -81,6 +88,11 @@ footer {
   margin-left: auto;
   margin-right: auto;
   width: 12em;
+}
+
+#output-image {
+    margin-bottom: 1em;
+    border: 1px solid #000;
 }
 
 .centered-content {

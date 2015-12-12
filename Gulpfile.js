@@ -37,6 +37,9 @@ gulp.task("copy", function() {
     gulp.src("views/*")
         .pipe(gulp.dest("dist/views"))
         .pipe(connect.reload());
+    gulp.src("resources/*")
+        .pipe(gulp.dest("dist/resources"))
+        .pipe(connect.reload());
 });
 
 gulp.task("default", ["sass", "watch", "copy", "connect"]);

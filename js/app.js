@@ -21,13 +21,13 @@ angular.module("Stego", ["ui.router"])
     .controller("StegoController", function($scope, $state){
         "use strict";
 
-        $scope.loading = false;
-        //DO NOT TOUCH THIS!
+        $scope.doneProcessing = false;
         $scope.encode = function(){
             var file = document.getElementById("image-input").files[0];
             if(file){
                 var read = new FileReader();
                 read.onloadend = function(e){
+                    $scope.doneProcessing = true;
                     //get the url result
                     var result = read.result;
                     // put that url in an img element
@@ -48,9 +48,8 @@ angular.module("Stego", ["ui.router"])
                     rawData.data.set(manipulator.buf8);
                     context.putImageData(rawData, 0, 0);
                     document.getElementById("output-image").setAttribute("src", canvas.toDataURL().toString());
-                    $scope.loading = false;
+                    $scope.doneProcessing = true;
                 };
-                $scope.loading = true;
                 read.readAsDataURL(file);
             }
         };
@@ -99,4 +98,3 @@ angular.module("Stego", ["ui.router"])
             $state.go('decode');
         };
     });
-
