@@ -24,7 +24,6 @@ function Manipulator(buffer, width, height){
         var index = 0;
         var binary = "";
         for(index; index < text.length; index++){
-            // should optimize this so we don't allocate new strings all the time
             binary += this.stringToBinary(text.charCodeAt(index));
         }
         // pad extra 0's till binary is a multiple of 3
@@ -39,6 +38,8 @@ function Manipulator(buffer, width, height){
         var pixelIndex = 0;
         for(index; index < binary.length; index+=3) {
             var bits = [];
+            // 48 is the char code for 0, 49 for 1
+            // puts in a number 1 or 0 based on the string "1" or "0"
             bits.push(binary.charCodeAt(index) === 48 ? 0 : 1);
             bits.push(binary.charCodeAt(index + 1) === 48 ? 0 : 1);
             bits.push(binary.charCodeAt(index + 2) === 48 ? 0 : 1);
@@ -46,11 +47,16 @@ function Manipulator(buffer, width, height){
             this.setLsb(pixelIndex, bits);
             pixelIndex++;
         }
+        // set the LSB of all remaining pixels to 0, causing them to output
+        // nothing when decoding
         for(pixelIndex; pixelIndex < this.buf32.length; pixelIndex++){
             this.setLsb(pixelIndex, [0,0,0]);
         }
     };
 
+    /*
+    Decodes the buffer stored in memory for the PixelManipulator
+    */
     this.decode = function() {
         var finalBinary;
         var finalArray = [];
@@ -66,6 +72,9 @@ function Manipulator(buffer, width, height){
         return this.convertBinaryToString(finalBinary);
     };
 
+    /*
+    Converts a given string to a binary string
+    */
     this.stringToBinary = function(charcode) {
         var padded = "00000000";
         // pad the values if necessary (usually is necessary)
@@ -87,10 +96,13 @@ function Manipulator(buffer, width, height){
         return binaryString;
     };
 
+    /*
+    Converts the binary array given back to a string
+    */
     this.convertBinaryToString = function(binary) {
         var returnValue = "";
         var res = binary.split(" ");
-        for (var i = 0; i < res.length; i++) 
+        for (var i = 0; i < res.length; i++)
         {
             var value  = parseInt(res[i],2).toString(10);
             returnValue += String.fromCharCode(value);
@@ -114,30 +126,22 @@ function Manipulator(buffer, width, height){
         for(i; i < bits.length; i++){
             // for once I actually want == not ===
             if(bits[i] == 0){
-                // clear bit
+                // clear bit, making it 0
                 this.buf32[index] &= ~(1 << i * 8);
             } else {
-                // or bit
+                // or bit, making it a 1
                 this.buf32[index] |= 1 << (i * 8);
             }
         }
     };
 
     /*
-        Returns the RGBA representation of the pixel at the given index
+     gets the LSB of each of the 3 color channels.
+     Returns an array of 3 1's or 0's representing the 3 LSBs
     */
-    this.getPixel = function(index){
-        index *= 4;
-        return [this.buf8[index], this.buf8[index+1], this.buf8[index+2], this.buf8[index+3]];
-    };
-
-
-    this.getPixel = function(index){
-        return this.buf32[index];
-    };
-
     this.getLsb = function(index){
         var result = [];
+        // &'ing with 1 will return the LSB
         // red
         result.push((this.buf32[index]) & 1);
         // blue
@@ -145,14 +149,5 @@ function Manipulator(buffer, width, height){
         // green
         result.push((this.buf32[index] >> 16) & 1);
         return result;
-    };
-
-    this.getLsbColor = function(index, colorIndex){
-        /*  ------ Error checking omitted for speed reasons
-        // add 0-2 for RGB respectively
-        if(colorIndex < 0 || colorIndex >= 3){ throw "Color index must be between 0 and 3 (R, G, or B respectively)";}
-        */
-        console.log("got lsb of: "+this.buf8[index * 4 + colorIndex] + " as: "+this.buf8[index * 4 + colorIndex] & 1);
-        return this.buf8[index * 4 + colorIndex] & 1;
     };
 }
